@@ -1,0 +1,29 @@
+
+
+<h1><%= t(:listing_log_entries) %></h1>
+
+
+<table class="index" id="listing_log_entries">
+  <tr>
+    <th>Source</th>
+	<th>Details</th>
+    <th>Timestamp</th>
+  </tr>
+
+<% @log_entries.each do |log_entry| %>
+  <tr>
+	<% if log_entry.source_type == "Spree::Payment" %>
+    	<td><%= link_to "Payment for #{log_entry.source.order.number}", [:admin, log_entry.source.order, log_entry.source] %></td>
+	<% else %>
+    	<td><%= log_entry.source %></td>
+	<% end %>
+    <td><%= simple_format(log_entry.details) %></td>
+    <td><%= log_entry.created_at %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+<% content_for :sidebar do %>
+<% end %>
