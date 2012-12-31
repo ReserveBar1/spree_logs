@@ -1,5 +1,3 @@
-
-
 <h1><%= t(:listing_log_entries) %></h1>
 
 
@@ -13,7 +11,11 @@
 <% @log_entries.each do |log_entry| %>
   <tr>
 	<% if log_entry.source_type == "Spree::Payment" %>
-    	<td><%= link_to "Payment for #{log_entry.source.order.number}", [:admin, log_entry.source.order, log_entry.source] %></td>
+		<% begin %>
+    		<td><%= link_to "Payment for #{log_entry.source.order.number}", [:admin, log_entry.source.order, log_entry.source] %></td>
+		<% rescue %>
+			<td>Cannot find order for this payment</td>
+		<% end %>
 	<% else %>
     	<td><%= log_entry.source %></td>
 	<% end %>
@@ -23,7 +25,7 @@
 <% end %>
 </table>
 
-
+<%= paginate @log_entries %>
 
 <% content_for :sidebar do %>
 <% end %>
