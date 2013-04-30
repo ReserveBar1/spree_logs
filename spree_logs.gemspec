@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_logs'
-  s.version     = '0.2'
+  s.version     = '0.3'
   s.summary     = 'Spree Logging'
 
   s.author        = 'Thomas Boltze'

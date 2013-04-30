@@ -1,0 +1,17 @@
+<h2>Log Entries</h2>
+
+<table class="index" id="listing_log_entries">
+  <tr>
+	<th>Details</th>
+    <th>Timestamp</th>
+  </tr>
+
+<% @payment.log_entries.each do |log_entry| %>
+  <tr>
+    <td><%= simple_format(log_entry.details) %></td>
+    <td><%= log_entry.created_at %></td>
+  </tr>
+<% end %>
+</table>
+
+
